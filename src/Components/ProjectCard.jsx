@@ -1,4 +1,4 @@
-function ProjectCard({ project, onOpen }) {
+function ProjectCard({ project, onOpen, actionLabel }) {
   return (
     <button
       type="button"
@@ -20,7 +20,7 @@ function ProjectCard({ project, onOpen }) {
             </span>
           ))}
         </div>
-        <span className="project-card__action">Open README</span>
+        <span className="project-card__action">{actionLabel}</span>
       </div>
     </button>
   );

@@ -1,4 +1,4 @@
-function ReadmeModal({ project, readmeState, readmeContent, onClose }) {
+function ReadmeModal({ project, readmeState, readmeContent, onClose, ui }) {
   if (!project) {
     return null;
   }
@@ -13,15 +13,15 @@ function ReadmeModal({ project, readmeState, readmeContent, onClose }) {
     >
       <div className="readme-modal__panel" onClick={(event) => event.stopPropagation()}>
         <div className="readme-modal__header">
-          <h4 id="readme-title">{project.title} README</h4>
+          <h4 id="readme-title">
+            {project.title} {ui.modalTitleSuffix}
+          </h4>
           <button type="button" className="readme-modal__close" onClick={onClose}>
-            Close
+            {ui.closeButtonText}
           </button>
         </div>
-        {readmeState === "loading" && <p className="readme-state">Loading README...</p>}
-        {readmeState === "error" && (
-          <p className="readme-state">README not available. Please try again.</p>
-        )}
+        {readmeState === "loading" && <p className="readme-state">{ui.loadingText}</p>}
+        {readmeState === "error" && <p className="readme-state">{ui.errorText}</p>}
         {readmeState === "ready" && <pre className="readme-content">{readmeContent}</pre>}
       </div>
     </div>

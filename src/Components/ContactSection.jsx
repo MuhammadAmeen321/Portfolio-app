@@ -1,4 +1,4 @@
-function ContactSection({ profile, contact }) {
+function ContactSection({ contact }) {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -9,35 +9,43 @@ function ContactSection({ profile, contact }) {
         <h3>{contact.heading}</h3>
         <p>{contact.description}</p>
 
-        <h4>Connect With Me</h4>
+        <h4>{contact.connectHeading}</h4>
         <div className="contact-links">
-          <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a href={`mailto:${profile.email}`}>Email</a>
+          {contact.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.isExternal ? "_blank" : undefined}
+              rel={link.isExternal ? "noreferrer" : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </div>
 
       <form className="contact-form" onSubmit={handleSubmit}>
         <div className="contact-form__row">
-          <label>
-            Name
-            <input type="text" placeholder="John Doe" />
-          </label>
-          <label>
-            Email
-            <input type="email" placeholder="john@example.com" />
-          </label>
+          {contact.form.topRowFields.map((field) => (
+            <label key={field.name}>
+              {field.label}
+              <input type={field.type} name={field.name} placeholder={field.placeholder} />
+            </label>
+          ))}
         </div>
-        <label>
-          Subject
-          <input type="text" placeholder="Project Inquiry" />
-        </label>
-        <label>
-          Message
-          <textarea rows="5" placeholder="Tell me about your project..." />
-        </label>
-        <button type="submit">Send Message</button>
+
+        {contact.form.mainFields.map((field) => (
+          <label key={field.name}>
+            {field.label}
+            {field.type === "textarea" ? (
+              <textarea rows={field.rows} name={field.name} placeholder={field.placeholder} />
+            ) : (
+              <input type={field.type} name={field.name} placeholder={field.placeholder} />
+            )}
+          </label>
+        ))}
+
+        <button type="submit">{contact.form.submitText}</button>
       </form>
     </section>
   );

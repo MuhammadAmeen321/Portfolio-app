@@ -1,12 +1,12 @@
-function HeroSection({ profile, profileImage }) {
+function HeroSection({ profile }) {
   return (
     <header className="hero" id="home">
       <div className="hero__container">
         <div className="hero__photo-wrap">
-          <img className="hero__photo" src={profileImage} alt={`Portrait of ${profile.name}`} />
+          <img className="hero__photo" src={profile.imageSrc} alt={profile.imageAlt} />
         </div>
         <div className="hero__content">
-          <p className="hero__eyebrow">Data Scientist Portfolio</p>
+          <p className="hero__eyebrow">{profile.eyebrow}</p>
           <h1>{profile.name}</h1>
           <h2>{profile.title}</h2>
           <p className="hero__summary">{profile.summary}</p>

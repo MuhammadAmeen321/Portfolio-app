@@ -1,11 +1,15 @@
-function Footer({ profile }) {
+function Footer({ profile, footer }) {
   return (
     <footer className="footer">
-      <p>Email: {profile.email}</p>
       <p>
-        LinkedIn: <a href={profile.linkedinUrl}>Profile Link</a>
+        {footer.emailLabel}: {profile.email}
       </p>
-      <p>(c) {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+      <p>
+        {footer.linkedinLabel}: <a href={profile.linkedinUrl}>{footer.linkedinLinkText}</a>
+      </p>
+      <p>
+        {footer.copyrightPrefix} {new Date().getFullYear()} {profile.name}. {footer.rightsText}
+      </p>
     </footer>
   );
 }
