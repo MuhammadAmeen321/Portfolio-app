@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -12,9 +14,21 @@ body,
 
 body {
   min-width: 320px;
-  background: #f3f6fb;
-  font-family: "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
-  line-height: 1.5;
+  background: #ecf1f8;
+  color: #14253e;
+  font-family: "Manrope", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
